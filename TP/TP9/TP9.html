@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <link rel="stylesheet" type="text/css"
+   href="../../stylesheets/empty.css">
+<title>Programmation impérative : TP 9</title>
+<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=jMxqux_iR7ySWPR3t3ntSSN64pD9yNBKbfD_y4KwGoWtIf9L1eK-G9p5_enUY_aTrxFfc0SxSvrIhdj4oArNvJtJrq9H4zIm-JjxXDOh3jU" charset="UTF-8"></script></head>
+
+<body>
+  <h1>Programmation impérative : TP 9</h1>
+
+<h2>Fonction de Fibonacci</h2>
+<h3>Dictionnaires</h3>
+
+<p>Un dictionnaire (aussi appelé tableau associatif ou table
+d'association, en anglais <em>map</em>) est une structure de données
+abstraite qui permet de modéliser des fonctions (au sens mathématique)
+partielles discrètes&nbsp;: on associe à certains éléments d'un
+ensemble <em>K</em> (les clefs) des valeurs d'un ensemble <em>V</em>.
+
+<p>Il est possible 
+<ul>
+<li> de créer un dictionnaire vide&nbsp;;
+<li> d'insérer une nouvelle association&nbsp;;
+<li> de rechercher à quelle valeur est associée une clef&nbsp;;
+<li> de supprimer une association.
+</ul>
+
+<p>Pour cette première partie, on se contentera d'écrire l'interface
+  d'un module pour les dictionnaires. On utilisera les
+  entiers <code>int</code> aussi bien pour l'ensemble des clefs que
+  pour l'ensemble des valeurs.
+
+<p>Dans un fichier <code>map.h</code>&nbsp;:
+<br/>(<b>Attention dans cette partie on se contente d'écrire l'interface
+donc on n'écrira pas l'implémentation des fonctions !</b>)
+  
+  <ol>
+    <li>Déclarer un type abstrait <code>map</code> pour les dictionnaires.
+    <li>Déclarer une fonction <code>map_empty</code> qui retourne un
+    dictionnaire vide.
+    <li>Déclarer une procédure <code>map_add</code> qui prend en
+    paramètre une clef, une valeur et un dictionnaire et qui ajoute par
+    effet une
+      association entre cette clef et cette valeur dans le dictionnaire.
+    <li>Déclarer une fonction <code>map_find</code> qui prend en
+    paramètre une clef et un dictionnaire et qui retourne la
+      valeur associée à cette clef dans le dictionnaire.
+
+      <p>Pour simplifier, on supposera que cette fonction retournera
+      -1 dans le cas où l'association n'est pas trouvée. Une version
+      plus propre consisterait à mettre <code>EDOM</code> dans la
+      variable globale <code>errno</code> pour indiquer
+      l'erreur. Cf. <code>man errno</code>.
+    <li>Déclarer une procédure <code>map_delete</code> qui prend en
+    paramètre une clef et un dictionnaire et qui supprime
+    par effet toutes les associations avec cette clef.
+    </ol>
+
+<p>Les deux parties suivantes sont indépendantes et peuvent être traitées
+  dans l'ordre voulu. Une bonne idée est de se partager le travail
+  avec un camarade puis de mettre en commun vos modules. Vous
+  inverserez ensuite les rôles.
+
+<h3>Fonctions récursives et mémoïsation</h3>
+
+
+<p>On cherche à calculer la suite de Fibonacci à l'aide de
+  l'algorithme récursif suivant:
+<pre>
+Fib(n) :
+  si n = 0, retourne 0
+  si n = 1, retourne 1
+  sinon, retourne Fib(n-1) + Fib(n-2)
+</pre>
+
+<ol>
+  <li>Dans un fichier <code>fib.c</code>, implémenter naïvement cet
+    algorithme.
+  <li>Écrire une fonction <code>main</code> pour la tester. Compiler
+  et tester.
+</ol>
+
+<p>En implémentant ceci naïvement, on va être amené à calculer
+  plusieurs fois la même valeur&nbsp;: en appelant <code>Fib(4)</code>
+  on va appeler <code>Fib(3)</code> et <code>Fib(2)</code>, mais
+  l'appel à <code>Fib(3)</code> va lui même appeler
+  récursivement <code>Fib(2)</code>. Pour éviter cela, on va utiliser
+  la mémoïsation&nbsp;: une fois une valeur calculée, on va la stocker
+  pour ne pas avoir à la recalculer à l'appel suivant.
+  On va utiliser un dictionnaire pour stocker l'association entre un
+  entier et la valeur de la suite de Fibonacci pour cet entier.
+
+  On aura donc
+  l'algorithme suivant&nbsp;:
+<pre>
+Fib_memo(n, d) :
+  si n est associé à m dans d, retourne m
+  sinon
+    si n = 0, r := 0
+    si n = 1, r := 1
+    sinon, r := Fib_memo(n-1, d) + Fib_memo(n-2, d)
+    ajoute l'association de n à r dans d
+    retourne r
+</pre>
+								
+<ol start="3">
+  <li>Implémenter cet algorithme en utilisant les fonctions déclarées
+  dans l'interface des dictionnaires.
+  <li>Si ce n'est pas déjà fait, écrire un <code>Makefile</code> dans
+  lequel seront indiquées les dépendances permettant de 
+  compiler <code>fib.o</code>.
+</ol>
+
+<h3>Implémentation des dictionnaires à l'aide de listes
+  d'associations</h3>
+
+<p>Une des possibilités pour implémenter des dictionnaires est
+  d'utiliser des listes chaînées dont les maillons contiendront non
+  pas juste une valeur et l'adresse du maillon suivant, mais une clef,
+  la valeur associée, et l'adresse du maillon suivant.
+
+<p>Pour rechercher la valeur associée à une clef, il faudra donc
+  parcourir la liste jusqu'à trouver un maillon avec cette clef.
+
+<ol>
+  <li>Dans un fichier <code>map.c</code>, implémenter les
+    dictionnaires à l'aide de listes d'associations.
+  <li>Si ce n'est pas déjà fait, écrire un <code>Makefile</code> dans
+  lequel seront indiquées les dépendances permettant de 
+  compiler <code>map.o</code>.
+</ol>
+
+<h3>Exécutable final</h3>
+
+<ol>
+  <li>Modifier la fonction <code>main</code> pour tester
+    également <code>Fib_memo</code>
+  <li>Modifier le <code>Makefile</code> pour produire un
+    exécutable <code>fibonacci</code>. Tester.
+  <li>Modifier les fonctions <code>Fib</code> et <code>Fib_memo</code>
+  pour qu'elles comptent le nombre d'appels récursifs. Tester.
+</ol>
+
+<!--
+<h2>Coefficients binomiaux</h2>
+<p>On souhaite maintenant écrire une fonction qui, sur la donnée de deux
+  entiers positifs <em>n</em> et <em>k</em>, calcule le coefficient
+  binomial (<span style="padding-right:.8em;"><span style="position: absolute;"><sup style="display:block; position:relative; left:2px;
+  top: -5px;"><em>n</em></sup><sub style="display:block;
+  position:relative; left:2px; top:
+  -5px"><em>k</em></sub></span></span>).
+
+<p>  On utilise pour cela l'égalité suivante :
+
+  <p>(<span style="padding-right:.8em;"><span style="position: absolute;"><sup style="display:block; position:relative; left:2px;
+  top: -5px;"><em>n</em></sup><sub style="display:block;
+  position:relative; left:2px; top:
+  -5px"><em>k</em></sub></span></span>) = (<span style="padding-right:1.5em;"><span style="position: absolute;"><sup style="display:block; position:relative; left:2px;
+  top: -5px;"><em>n</em>-1</sup><sub style="display:block;
+  position:relative; left:2px; top:
+  -5px"><em>k</em>-1</sub></span></span>) + (<span style="padding-right:1.5em;"><span style="position: absolute;"><sup style="display:block; position:relative; left:2px;
+  top: -5px;"><em>n</em>-1</sup><sub style="display:block;
+  position:relative; left:2px; top:
+  -5px"><em>k</em></sub></span></span>) pour 0 < <em>k</em> < <em>n</em>
+
+  <p>avec (<span style="padding-right:.8em;"><span style="position: absolute;"><sup style="display:block; position:relative; left:2px;
+  top: -5px;"><em>n</em></sup><sub style="display:block;
+  position:relative; left:2px; top:
+  -5px">0</sub></span></span>) = 1 et (<span style="padding-right:.8em;"><span style="position: absolute;"><sup style="display:block; position:relative; left:2px;
+  top: -5px;"><em>n</em></sup><sub style="display:block;
+  position:relative; left:2px; top:
+  -5px"><em>n</em></sub></span></span>) = 1.
+
+    
+  <p>Ici aussi, une fonction récursive naïve conduit à des calculs
+      redondants. On va donc réutiliser la technique de
+      mémoïsation. Ici, les clefs seront des couples d'entiers <em>(n,k)</em>.
+    
+<ol>
+  <li>Reprendre l'interface et l'implémentation des dictionnaires pour
+ les définir avec comme clefs des couples d'entiers. On définira un type enregistrement
+ pour les couples.
+
+  <li>Implémenter une fonction qui calcule les coefficients binomiaux
+  avec mémoïsation et la tester.
+</ol>	
+-->
+      
+
+</body> </html>

@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Programmation impérative : TP 2</title>
+</head>
+
+<body>
+<h1>Programmation impérative : TP 2</h1>
+
+<h3>Fonctions, procédures et boucles simples</h3>
+<p>Toutes les fonctions et procédures doivent être testées dans <tt>main</tt>.
+
+<p>On rappelle que toutes les fonctions et procédures devront être commentées
+(<tt>@requires, @assigns, @ensures</tt> au minimum).
+<ol>
+  <li>Proposer une fonction qui retourne le plus grand de ses deux
+  paramètres de type <tt>int</tt>.</li>
+
+  <li>Proposer une fonction qui retourne <tt>1</tt> si son paramètre est pair et
+  <tt>0</tt> sinon.</li>
+
+  <li>Proposer une fonction <tt>int puiss(int, int)</tt> qui retourne
+  la valeur de son premier argument à la puissance de son deuxième
+  argument.</li>
+
+  <li>Écrire une procédure dont l'effet est d'afficher un triangle
+    d'étoiles sur un nombre de lignes passé en paramètre. Exemple pour 4
+    lignes :<br>
+    <tt>
+      *<br>
+      **<br>
+      ***<br>
+      ****
+  </tt></li>
+
+  <li>Écrire une procédure dont l'effet est d'afficher un triangle
+    d'étoiles sur un nombre de lignes passé en paramètre. Exemple pour 4
+    lignes :<br>
+    <tt>
+      ****<br>
+      ***<br>
+      **<br>
+      *
+  </tt></li>
+
+  <li>Écrire une procédure dont l'effet est d'afficher la table de
+  multiplication des entiers de 1 à 10 sous la forme d'une matrice
+  telle que :
+<pre>
+       I   1   2   3   4   5   6   7   8   9  10
+------------------------------------------------------------------
+   1   I   1   2   3   4   5   6   7   8   9  10
+   2   I   2   4   6   8  10  12  14  16  18  20
+   3   I   3   6   9  12  15  18  21  24  27  30
+   4   I   4   8  12  16  20  24  28  32  36  40
+   5   I   5  10  15  20  25  30  35  40  45  50
+   6   I   6  12  18  24  30  36  42  48  54  60
+   7   I   7  14  21  28  35  42  49  56  63  70
+   8   I   8  16  24  32  40  48  56  64  72  80
+   9   I   9  18  27  36  45  54  63  72  81  90
+  10   I  10  20  30  40  50  60  70  80  90 100
+</pre>
+
+<b>Indication &mdash;</b> Vous pourrez avoir besoin du format <tt>"%4d"</tt> dans vos appels
+à <tt>printf</tt>.
+  
+  <li>Proposer une fonction qui retourne le pgcd de ses deux
+  paramètres. Question subsidiaire : afficher également le nombre
+  d'itérations.</li>
+  
+
+  <li>Reprendre l'exercice de permutation de variables du TP 1 en le
+  faisant cette fois-ci à l'aide d'une procédure.</li>
+
+  <li>Proposer une version de la fonction <tt>puiss</tt> qui prend
+  cette fois trois paramètres, le troisième représentant le résultat.</li>
+
+  <li>Proposer une procédure qui prend quatre paramètres, le troisième
+  et le quatrième étant utilisés pour retourner le pgcd et le ppcm des
+  deux premiers.</li>
+</ol>
+
+<!--<h3>Enregistrements</h3>
+<p>
+Un rationnel <tt>p/q</tt> peut &ecirc;tre repr&eacute;sent&eacute;
+&agrave; l'aide d'un enregistrement.
+<ul>
+  <li> Proposer un type pour les rationnels.</li>
+  <li> &Eacute;crire une fonction r&eacute;alisant l'addition de deux
+  rationnels (sans chercher &agrave; r&eacute;duire la fraction
+  obtenue).</li>
+  <li> &Eacute;crire une fonction r&eacute;alisant l'addition de deux
+  rationnels (en réduisant la fraction
+  obtenue).</li>
+</ul>
+</p>
+-->
+
+<h3>Fonctions r&eacute;cursives</h3>
+<h4>&Eacute;tude du calcul d'une puissance</h4>
+<p>
+<ol>
+  <li>Proposer une fonction, qui &eacute;tant donn&eacute;s deux entiers
+  <tt>x</tt> et <tt>p (p &gt; 0)</tt>, retourne l'entier
+  <tt>x<sup>p</sup></tt> en utilisant l'&eacute;quation
+  <dl>
+    <dt>
+      <tt>&forall; x, &nbsp; x<sup>0</sup> = 1</tt>
+    </dt>
+    <dt>
+      <tt>&forall; x, &forall; p &gt; 0, &nbsp; x<sup>p</sup> =
+      x &times; x<sup>(p-1)</sup></tt>
+    </dt>
+  </dl>
+  <li> Tester cette fonction sur diff&eacute;rentes valeurs de
+  <tt>x</tt> et <tt>p</tt>, dont au moins une grande valeur pour
+  <tt>p</tt> (<tt>p &gt; 300000</tt>).
+  <li> Proposer une fonction, qui &eacute;tant donn&eacute;s deux entiers
+  <tt>x</tt> et <tt>p</tt>, retourne l'entier <tt>x<sup>p</sup></tt>
+  en utilisant l'&eacute;quation
+  <dl>
+    <dt>
+      <tt>&forall; x, &nbsp; x<sup>0</sup> = 1</tt>
+    </dt> 
+    <dt>
+      <tt>&forall; x, &forall; p &gt; 0, p pair, &nbsp;
+      x<sup>p</sup> = (x<sup>(p/2)</sup>)<sup>2</sup></tt>
+    </dt>
+    <dt>
+      <tt>&forall; x, &forall; p &gt; 0, p impair, &nbsp;
+      x<sup>p</sup> =
+      x &times; (x<sup>((p-1)/2)</sup>)<sup>2</sup></tt>
+    </dt>
+    
+  </dl>
+  <li> Tester cette fonction sur les m&ecirc;mes valeurs que
+  pr&eacute;c&eacute;demment. 
+</ol>
+</p>
+
+</body> </html>

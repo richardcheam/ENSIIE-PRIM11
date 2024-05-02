@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <link rel="stylesheet" type="text/css"
+   href="../../stylesheets/empty.css">
+<title>Programmation impérative : TP 8</title>
+<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=hzrGgW4yK26PeNZqGrAz7n6N-NSNMsrsCmUoAnRuPjGWXTAYCMcf8RJSuZvxlLLi92yAgrj4Wux_akTTQrmWsKBrqWLn-V3g03imEB5LBJA" charset="UTF-8"></script></head>
+
+<body>
+  <h1>Programmation impérative : TP 8</h1>
+
+  <p>Pour ces deux exercices, on travaillera sur des listes d'entiers.</p>
+  <h3> Listes chaînées </h3>
+
+
+    <ol>
+  <li> Proposer une fonction qui insère entre chaque paire d'éléments consécutifs d'une liste
+  leur moitié.
+</li>
+
+    <li> Proposer une fonction qui retourne une liste comportant les mêmes
+  éléments mais triée (par insertion) par ordre
+  croissant qu'une liste passée en paramètre. On ne modifiera pas la
+  liste passée en paramètre.
+</li>
+
+<li> Proposer une procédure dont l'effet est de  trier (par insertion) par ordre
+  croissant une liste passée en paramètre. On ne fera pas
+  d'allocation dynamique (même indirectement via les constructeurs
+  de listes).
+</li>
+
+<li>Crible d'Ératosthène
+
+  <ol>
+    <li> Proposer une fonction qui sur la donnée d'un entier <em>n</em> retourne une
+  liste contenant tous les entiers de 2 à <em>n</em>, 2 étant en tête
+      de liste.
+    </li>
+    <li>Proposer une procédure qui sur la donnée d'un entier et d'une
+    liste, supprime tous les éléments de la liste qui sont des
+    multiples de l'entier.</li>
+<li>
+  Proposer une fonction implémentant le crible d'Ératosthène
+  pour obtenir la liste des nombres premiers de 2
+  à <em>n</em>.</li>
+</ol>
+  </li>
+</ol>
+
+<h3>Tri rapide</h3>
+
+<ol>
+<!--  <li>Proposer une procédure qui sur la donnée d’une liste <tt>l</tt> et de deux pointeurs sur liste <tt>r1</tt> et <tt>r2</tt> a pour
+effet de découper <tt>l</tt> en deux listes de longueurs égales (à un
+    près) et à mettre le résultat dans <tt>r1</tt> et <tt>r2</tt>.</li>-->
+<li>Proposer une procédure qui sur la donnée d’une liste <tt>l</tt>,
+  d'un double <tt>pivot</tt> et  de deux pointeurs sur liste <tt>r1</tt> et <tt>r2</tt> a pour
+effet de découper <tt>l</tt> en mettant dans <tt>*r1</tt> les éléments
+  plus petits ou égaux à <tt>pivot</tt> et dans <tt>*r2</tt> les
+  éléments strictement plus grands. On  ne fera pas d'allocation dynamique.
+<li>(Vu en cours.) Implémenter une fonction qui concatène deux
+  listes.</li>
+ <li>Implémenter le tri rapide : on choisit comme pivot le
+ premier élément de la liste ; on sépare la suite de la liste en deux listes
+ contenant les éléments plus petits ou égaux au pivot, et plus grands ;
+ on tri récursivement les deux sous-listes ; on concatène
+   finalement la première sous-liste triée, le pivot et la deuxième
+ sous-liste triée.
+   </li>
+      
+
+</body> </html>

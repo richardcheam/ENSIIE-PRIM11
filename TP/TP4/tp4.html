@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+   <link rel="stylesheet" type="text/css"
+   href="../../stylesheets/empty.css">
+<title>Programmation imp&eacute;rative : TP 4</title>
+<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=GoKskXbxc5RoWZODSEtPEc-pNqeFpjtaIRjAqzeRRp7RQg10ZgCAUjmcryfXJHrOjQ2xZwbj1B8n_IWIZfyievgDLWb1myta5OZSLPSIv1o" charset="UTF-8"></script></head>
+
+<body>
+<h1>Programmation imp&eacute;rative : TP 4</h1>
+
+<ul>
+<li><b>TOUTES</b> les fonctions demandées doivent être commentées
+  (brièvement) ; en particulier on indiquera clairement les prérequis
+  (pile non vide, etc.)</li>
+<li><b>TOUTES</b> les fonctions demandées doivent être testées
+  dans <tt>main</tt>.</li>
+</ul>
+<!-- <h3>Tableaux comme type concret</h3> -->
+<!-- <p>On se propose de repr&eacute;senter des polyn&ocirc;mes de -->
+<!-- degr&eacute; <em>N-1</em> &agrave; l'aide de tableaux de <em>N</em> -->
+<!-- cases tels que l'indice repr&eacute;sente de degr&eacute; du -->
+<!-- mon&ocirc;me et la valeur &agrave; cet indice repr&eacute;sente le -->
+<!-- coefficient associ&eacute;.</p> -->
+<!-- <ol> -->
+<!--   <li>Proposez une fonction qui sur la donn&eacute;e de trois -->
+<!--   polyn&ocirc;mes <em>p1</em>, <em>p2</em> et <em>p3</em> -->
+<!--   modifie <em>p3</em> afin qu'il soit &eacute;gal &agrave; la somme -->
+<!--   de <em>p1</em> et <em>p2</em>.</li> -->
+<!--   <li>Proposez une fonction qui retourne la valeur d'un polyn&ocirc;me -->
+<!--   en un point donn&eacute;, d'abord na&iuml;vement puis en -->
+<!--   sch&eacute;ma de Horner. <em>Cette fonction affichera le nombre de -->
+
+<!--   multiplications effectuées.</em></li> -->
+<!-- </ol> -->
+
+
+<!-- <h3>Recherche en tables</h3>  -->
+<!-- <p>On peut travailler sur deux tableaux pour associer par exemple des -->
+<!-- prix &agrave; des r&eacute;f&eacute;rences (et vice versa). -->
+<!-- Consid&eacute;rons deux tableaux de m&ecirc;me taille <tt>ref</tt> -->
+<!-- et <tt>price</tt>. On range dans <tt>ref</tt> les -->
+<!-- r&eacute;f&eacute;rences des articles, on range dans <tt>price</tt> -->
+<!-- les prix correspondants <em>dans le m&ecirc;me ordre</em>. Par -->
+<!-- hypoth&egrave;se toutes les r&eacute;f&eacute;rences doivent -->
+<!-- &ecirc;tre distinctes deux-&agrave;-deux.</p> -->
+<!-- <ol> -->
+<!--   <li>Proposez une fonction qui teste (naïvement) si un article est -->
+<!--   r&eacute;f&eacute;renc&eacute; dans cette base. -->
+<!--   <li>Proposez une fonction qui retourne le prix d'un article de -->
+<!--     r&eacute;f&eacute;rence donn&eacute;e. -->
+<!--   </li> -->
+<!--   <li>Proposez une fonction qui affiche les r&eacute;f&eacute;rences -->
+<!--   de tous les articles correspondant &agrave; un prix donn&eacute;. -->
+<!--   </li> -->
+<!-- </ol> -->
+
+
+<h3>Piles</h3>
+
+<p>Dans cette première partie, on va implémenter les piles à l'aide de
+tableaux statiques, dont la taille est fixe et constante. On
+  considérera que les éléments mis dans les piles sont de type <tt>int</tt>.</p>
+<ol>
+<li>Proposez une procédure d'affichage ainsi que les fonctions sur les piles
+  mentionnées en cours : 
+  <ul>
+    <li>Affichage d'une pile : sommet à gauche et base à droite, largeur constante</li>
+    <li>Initialisation qui a pour effet de rendre une pile vide,</li>
+    <li>Test de vacuité qui retourne <tt>1</tt> si une pile est vide
+  et <tt>0</tt> sinon,</li>
+    <li>Empilement qui a pour effet de placer une valeur en sommet de
+    pile,</li>
+    <li>Dépilement qui a pour effet de retirer l'élement au sommet de
+    la pile et le retourne.</li>
+  </ul>
+</li>
+<b>Vous devez utiliser ces fonctions <span style="color:#FF0000">et uniquement celles-ci</span> dans la suite pour toute
+  manipulation des piles.</b>
+
+<li>Proposez une procédure qui duplique l'élément à son sommet (on
+  trouve donc ensuite cet élément au sommet <b>et</b> à l'étage juste
+  en dessous ; la pile a gagné <em>un</em> élément).</li>
+
+<li>On souhaite écrire une fonction qui calcule la factorielle
+  d'un <tt>int</tt> à l'aide d'une pile.
+  <ol>
+   <li>Proposez une procédure qui empile son sommet puis celui-ci moins
+     1 <!-- s'il est différent de 1 -->.<br>  
+     <b>Par exemple</b> si une pile contient <em>k</em> éléments et
+     que son sommet est <em>n</em>, au sortir de la
+     fonction la pile aura <em>k+1</em> éléments, son sommet
+     sera <em>n-1</em> et l'étage en dessous du sommet
+     contiendra <em>n</em>.</li>
+   <li>Proposez une fonction qui retourne le produit de tous les éléments
+     d'une pile (éléments de type <tt>int</tt>) passée en paramètre.</li>
+   <li>Proposez une fonction qui retourne la factorielle
+     d'un <tt>int</tt> à l'aide (entre autre) des deux fonctions
+     précédentes. Vous afficherez la pile à chaque étape.</li>
+  </ol>
+</li>
+
+<li> On souhaite écrire une fonction qui calcule la factorielle
+  d'un <tt>int</tt> à l'aide d'une pile mais de manière un peu différente.
+  <ol>
+    <li> Proposez une procédure qui a pour effet d'empiler le produit des
+      deux premiers éléments accessibles d'une pile (éléments de
+      type <tt>int</tt>) <b>puis</b> l'ancien sommet moins 1.<br> 
+      <b>Par exemple</b> si une pile contient <em>k</em> éléments, que
+      son sommet est <em>n</em> et l'étage en dessous du
+      sommet <em>m</em>, au sortir de la fonction la pile
+      aura <em>k</em> éléments, son sommet sera <em>n-1</em> et
+      l'étage en dessous du sommet contiendra <em>n*m</em>.</li>
+    <li>Proposez une fonction qui retourne la factorielle
+      d'un <tt>int</tt> à l'aide (entre autre) de la fonction
+      précédente. Vous afficherez la pile à chaque étape.</li>
+  </ol>
+</li>
+
+<li> Quelle différence constatez-vous entre ces deux méthodes ?</li>
+</ol>
+
+<h3>Allocations</h3>
+
+<p>Vous avez besoin dans la suite de la
+  bibliothèque <tt>stdlib.h</tt>.</p>
+
+<p>N'hésitez pas à utiliser <tt>scanf</tt> dans <tt>main</tt> pour
+faciliter l'entrée de vos tableaux et valeurs. Un bon exercice
+consiste à demander à l'utilisateur une taille de tableau puis autant
+de valeurs à entrer dans les cases qu'il est nécessaire. <b>Ce n'est
+    toutefois pas nécessaire pour la suite</b> dans un premier temps.</p>
+
+<ol>
+  <li>Proposez une fonction qui sur la donnée de deux <tt>double</tt>,
+  et seulement deux,
+  retourne un pointeur sur un <tt>double</tt> de la valeur maximale
+  des deux paramètres.</li>
+
+  <li>Proposez une fonction qui sur la donnée de deux
+  tableaux <tt>ta</tt>, <tt>tb</tt> de même
+  taille <tt>size</tt> (donc <em>trois</em> paramètres) retourne un
+  pointeur sur leur vecteur de différences.</li>
+
+ <li>On souhaite obtenir un tableau trié contenant les mêmes valeurs
+  qu'un tableau <tt>t</tt> passé en paramètre <em>sans modifier</em>
+  ce dernier. Proposez une fonction qui retourne un pointeur sur un
+  tel tableau trié.</li>
+
+ <!--
+ <li>Proposez une fonction qui retourne un pointeur sur un tableau
+ trié des éléments en commun dans deux tableaux <tt>ta</tt>
+ et <tt>tb</tt> de tailles respectives <tt>sa</tt>
+ et <tt>sb</tt>.  Est-ce satisfaisant ? (indice : non.)  Modifiez en -->
+ <!-- conséquence. --></li>
+</ol>
+
+<h3>Piles avec redimensionnement dynamique</h3>
+<p>On va modifier l'implémentation des piles de la première partie pour
+utiliser des tableaux dynamiques dont on fera varier la taille en
+fonction du remplissage. On prendra 1 comme taille initiale.
+</p>
+<ol>
+  <li>
+Modifiez le type des piles. En particulier il faudra ajouter un champ
+    contenant la taille courante du tableau.</li>
+<li>Ajouter une procédure qui prend en argument une pile et une
+  nouvelle taille, et qui redimensionne (par effet) la pile
+  pour que son tableau soit de la nouvelle taille. On n'oubliera de
+  libérer la mémoire du tableau précédemment alloué.</li>
+  <li>Modifier la fonction d'empilement pour doubler la taille du
+  tableau en cas de dépassement de capacité.</li>
+<li>Modifier la fonction de dépilement pour diminuer par deux la taille du
+  tableau quand il est moins rempli qu'un tiers.</li>
+<li>Vérifier que les fonctions calculant la factorielle fonctionnent toujours.</li>
+</li>
+</ol>
+
+</body> </html>

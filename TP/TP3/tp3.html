@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+   <link rel="stylesheet" type="text/css"
+   href="../../stylesheets/empty.css">
+<title>Programmation imp&eacute;rative : TP 3</title>
+<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=ND1RGdLFfnoqua5mNTAs2hTIaDjqcVAa2FPpoAutMmT3CWsYtNDbCjdY8Iex8fyiTAHtubBz4s6FiwlgLvGAtnrvaO5hzs7Ce_-8ApkMCJQ" charset="UTF-8"></script></head>
+
+<body>
+<h1>Programmation imp&eacute;rative : TP 3</h1>
+
+<h3>Rappel&nbsp;: appel par valeur, par référence</h3>
+
+<ol><li>Écrire une procédure qui incrémente une variable, c'est-à-dire qui
+    ajoute 1 à son contenu. Comme toujours, on n'oubliera pas de
+    tester dans <tt>main</tt>.</li>
+
+  <li>Écrire une procédure qui prend en paramètres une variable et un
+    entier et qui incrémente la variable de la valeur de l'entier.</li>
+</ol>
+
+<!--<h3>Ressources (à regarder chez vous)</h3>
+ <p> Un r&eacute;sum&eacute; des commandes principales (raccourcis clavier) -->
+<!-- emacs est accessible en pdf ici <a href="./refcard.pdf">[pdf]</a>.</li> -->
+<!-- </p> -->
+<!--
+<p>On peut avoir besoin de récupérer des valeurs de l'entrée standard,
+  par exemple pour entrer facilement des tableaux. Regardez donc le
+  manuel à la page de <tt>scanf</tt>&hellip; Cette fonction prend en
+  paramètre un format, un peu à la manière de <tt>printf</tt>, et
+  autant de pointeurs (bien typés) que de conversions dans le format,
+  son effet est d'affecter aux emplacements pointés les valeurs tapées
+  sur l'entrée standard. On peut entrer les valeurs les unes après les
+  autres ou en une seule fois (pourvu qu'on les sépare par des
+  espaces).<br>
+  <em>Exemple de récupération de deux valeurs :</em><br>
+  <tt>int a;<br>
+    int b;<br>
+    scanf("%d %d",&a,&b);<br>
+    printf("La valeur de a est : %d et celle de b est %d \n",a,b);</tt><br>
+  <em>affecte aux deux variables les valeurs respectivement reçues
+  depuis l'entrée standard puis les affiche.</em>
+</p>
+-->
+<h3>Enregistrements</h3>
+<p>
+Un rationnel <tt>p/q</tt> peut &ecirc;tre repr&eacute;sent&eacute;
+&agrave; l'aide d'un enregistrement précisant numérateur et dénominateur.
+<ul>
+  <li> Proposer un type pour les rationnels.</li>
+  <li> &Eacute;crire une fonction r&eacute;alisant l'addition de deux
+  rationnels (sans chercher &agrave; r&eacute;duire la fraction
+  obtenue).</li>
+  <li> &Eacute;crire une fonction r&eacute;alisant l'addition de deux
+  rationnels (en réduisant la fraction
+  obtenue).</li>
+</ul>
+</p>
+
+
+<h3>Tableaux, base</h3>
+
+<ol>
+  <li>Proposez une procédure qui affiche (sur une ligne) les
+    &eacute;l&eacute;ments d'un tableau d'<tt>int</tt> (correctement
+    espac&eacute;s, sur 5 caract&egrave;res), dans l'ordre des
+    indices.
+  </li>
+  <li>Proposez une procédure qui affiche les &eacute;l&eacute;ments
+  d'un tableau d'<tt>int</tt>, un par ligne,
+  pr&eacute;c&eacute;d&eacute;s de l'indice leur correspondant entre
+  crochets.<br>  Exemple : <tt>[42] : 666</tt>
+  </li>
+  <li>Proposez une fonction qui retourne la moyenne (<tt>double</tt>)
+  des &eacute;l&eacute;ments (<tt>int</tt>) d'un tableau.
+  </li>
+</ol>
+
+
+<h3>Tableaux comme type concret</h3>
+<p>On se propose de repr&eacute;senter des polyn&ocirc;mes de
+degr&eacute; au plus <em>N-1</em> &agrave; l'aide de tableaux de <em>N</em>
+cases tels que l'indice repr&eacute;sente le degr&eacute; du
+mon&ocirc;me et la valeur &agrave; cet indice repr&eacute;sente le
+coefficient associ&eacute;.</p>
+<ol>
+  <li>Proposez une fonction qui retourne la valeur d'un polyn&ocirc;me
+  en un point donn&eacute;, d'abord na&iuml;vement puis en
+  sch&eacute;ma de Horner.</li>
+  <li>Proposez une procédure qui sur la donn&eacute;e de trois
+  polyn&ocirc;mes <em>p1</em>, <em>p2</em> et <em>p3</em>
+  modifie <em>p3</em> afin qu'il soit &eacute;gal &agrave; la somme
+  de <em>p1</em> et <em>p2</em>. On pourra supposer que les trois
+  polynômes sont de même degré (en ajoutant des coefficients
+  égaux à 0 le cas échéant).</li>
+</ol>
+
+
+<h3>Recherche en tables</h3> 
+<p>On peut travailler sur deux tableaux pour associer par exemple des
+prix &agrave; des r&eacute;f&eacute;rences (et vice versa).
+Consid&eacute;rons deux tableaux de m&ecirc;me taille <tt>ref</tt>
+et <tt>price</tt>. On range dans <tt>ref</tt> les
+r&eacute;f&eacute;rences des articles, on range dans <tt>price</tt>
+les prix correspondants <em>dans le m&ecirc;me ordre</em>. Par
+hypoth&egrave;se toutes les r&eacute;f&eacute;rences doivent
+&ecirc;tre distinctes deux-&agrave;-deux.</p>
+<ol>
+  <li>Proposez une fonction qui teste si un article est
+  r&eacute;f&eacute;renc&eacute; dans cette base.
+  <li>Proposez une fonction qui retourne le prix d'un article de
+    r&eacute;f&eacute;rence donn&eacute;e.
+  </li>
+  <li>Proposez une procédure qui affiche les r&eacute;f&eacute;rences
+  de tous les articles correspondant &agrave; un prix donn&eacute;.
+  </li>
+</ol>
+
+<!--<h3>Recherche d'élément</h3>
+<ol>
+  <li>Implantez la fonction de recherche d'un élément dans un tableau
+  non supposé trié (vu en cours). De toute
+  fa&ccedil;on vous devez toujours coder ce que vous avez vu en
+    cours&hellip; Quel est l'invariant de la boucle <tt>for</tt>
+    ? </li>
+  <li>Implantez la fonction de recherche dichotomique d'un élément dans un tableau
+    supposé trié.
+  </li>
+  <li>Comparez le temps d'exécution des deux versions sur des grands
+  tableaux triés.</li>
+</ol>
+-->
+
+</body> </html>

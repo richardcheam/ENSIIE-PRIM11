@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+   <link rel="stylesheet" type="text/css"
+   href="../../stylesheets/empty.css">
+<title>Programmation imp&eacute;rative : TP 5</title>
+<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=MTWMLBX979vqzJMkrHeqP1fSZzgarJYJ-L3YYP0oyx7vmsWzB5KbBH_o8WD2bG96VAvOo3DxjbfvWpnEq3PDTrSOLvcX6bZxd2oY0HStopo" charset="UTF-8"></script></head>
+
+<body>
+<h1>Programmation imp&eacute;rative : TP 5</h1>
+
+<h3>Allocations</h3>
+
+<p>Vous avez besoin dans la suite de la
+  bibliothèque <tt>stdlib.h</tt>.</p>
+
+<ol>
+  <li>Proposez une fonction qui sur la donnée de deux <tt>double</tt>,
+  et seulement deux,
+  retourne un pointeur sur un <tt>double</tt> de la valeur maximale
+  des deux paramètres.</li>
+
+  <li>Proposez une fonction qui sur la donnée de deux
+  tableaux <tt>ta</tt>, <tt>tb</tt> de même
+  taille <tt>size</tt> (donc <em>trois</em> paramètres) retourne un
+  pointeur sur leur vecteur de différences.</li>
+
+ <li>On souhaite obtenir un tableau trié contenant les mêmes valeurs
+  qu'un tableau <tt>t</tt> passé en paramètre <em>sans modifier</em>
+  ce dernier. Proposez une fonction qui retourne un pointeur sur un
+  tel tableau trié.</li>
+</ol>
+
+<h3>Chaînes de caractères</h3>
+
+<p>On sera amené à faire des allocations dynamiques.</p>
+
+<ol>
+  <li> (Vu en TD) Écrire une fonction qui retourne la longueur d'une
+  chaîne de caractère, vue comme un tableau. </li>
+  <li> Écrire une fonction qui sur la donnée d'une chaîne de caractères
+  retourne une copie de cette chaîne.
+  </li>
+  <li> Écrire une fonction qui sur la donnée de deux chaînes de caractères
+  retourne une nouvelle chaîne qui est la concaténation de ces chaînes. (Exemple&nbsp;: avec
+  "coucou" et "toto", retourne "coucoutoto".)
+  </li>
+  <li> Écrire une fonction qui sur la donnée d'une chaîne de
+  caractères et de deux indices <code>i</code> et <code>j</code>, 
+  retourne une copie de la sous-chaîne comprise entre
+    l'indice <code>i</code> inclus et <code>j</code>
+  non-inclus. Penser à bien renseigner les préconditions de la
+  fonction&nbsp;!
+  </li>
+  <li> Écrire une fonction qui sur la donnée d'un
+  caractère <code>sep</code> et d'une chaîne <code>s</code>, retourne
+  un tableau contenant les sous-chaînes de <code>s</code> délimitées
+  par <code>sep</code>. Par exemple,
+  pour <code>sep</code> = <code>';'</code>
+    et <code>s</code> = <code>"ab;cde;;f;g hi"</code>, cette fonction
+  retourne une tableau de taille 5 contenant les chaînes <code>"ab"
+      "cde" "" "f"</code> et <code>"g hi"</code>.
+    <br/><br/>
+    
+    NB&nbsp;: en pratique, pour pouvoir utiliser une telle fonction,
+    il faudrait soit retourner également sa taille (avec un
+    enregistrement, ou dans un paramètre supplémentaire passé par
+    référence), ou alors ajouter une case supplémentaire contenant
+    l'adresse <code>NULL</code> marquant la fin du tableau.
+  </li>
+  <li>Écrire une fonction qui sur la donnée d'une chaîne de caractère
+  <code>s</code> et d'un caractère <code>c</code> retourne l'adresse
+  de la première occurrence de <code>c</code> dans <code>s</code>,
+  ou <code>NULL</code> si <code>c</code> n'est pas présent dans <code>s</code>.</li>
+</ol>
+
+
+</body> </html>

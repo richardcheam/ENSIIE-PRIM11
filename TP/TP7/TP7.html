@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <link rel="stylesheet" type="text/css"
+   href="../../stylesheets/empty.css">
+<title>Programmation impérative : TP 7</title>
+<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=zNrl36EDDkxaSdkCMoR81kF_W4AwDyBZzgldGUXo1JQu7_D-uJ2nMrJaivGHS8AXzb9DWVZZjst3WKdUY6MNqmTk9FkVAgQtkHTSvNdA3VY" charset="UTF-8"></script></head>
+
+<body>
+<h1>Programmation impérative : TP 7</h1>
+
+
+<h3>Listes</h3>
+
+<ol>
+<li> Implanter les listes chaînées d'objets de
+  type <tt>double</tt>. En particulier proposer le test de vacuité, les
+  constructions (par effet et par valeur) et une procédure d'affichage
+  de la forme vue en cours :<br>
+ <tt>-> [&nbsp;<em>valeur<sub>i</sub></em>&nbsp;]&nbsp;->&nbsp;[&nbsp;<em>valeur<sub>j</sub></em>&nbsp;]&nbsp;->&hellip;</tt>
+</li>
+
+<li> Proposer une fonction qui retourne la longueur d'une liste.</li>
+
+<li> Proposer une fonction qui retourne la somme de tous les éléments
+  d'une liste.</li>
+
+<li>Proposer une procédure dont l'effet est d'inverser l'ordre des
+  éléments d'une liste. On ne fera pas de nouvelles allocations (y
+  compris indirectement en appelant les fonctions de
+  construction). Autrement dit, il faudra réutiliser les maillons déjà
+  existants de la liste.
+</li>
+
+<li> Proposer une fonction de recherche d'un élément de valeur égale
+  à un <em>e</em> donné à 10<sup>-20</sup> près.
+</li>
+
+<li> Proposer une procédure dont l'effet est de retirer d'une liste 
+<b>un</b> élément de valeur égale
+  à un <em>e</em> donné à 10<sup>-20</sup> près. Si un tel élément
+  n'existe pas, la liste ne sera pas modifiée. Remarque : on peut
+  utiliser la constante <code>1e-20</code>.
+</li>
+<li> Proposer une fonction dont l'effet est de retirer d'une liste 
+<b>tous</b> les éléments de valeur égale
+  à un <em>e</em> donné à 10<sup>-20</sup> près.
+</li>
+</ol>
+
+<h3>Piles implémentées par des listes</h3>
+<ol>
+<li> Proposer une implantation du type abstrait des piles d'entiers à
+  base de listes. On sera donc amené à implémenter les procédures et
+  fonctions suivantes&nbsp;:
+    <ul>
+    <li>Affichage d'une pile : sommet à gauche et base à droite, largeur constante&nbsp;;</li>
+    <li>Initialisation qui a pour effet de rendre une pile vide&nbsp;;</li>
+    <li>Test de vacuité qui retourne <tt>1</tt> si une pile est vide
+  et <tt>0</tt> sinon&nbsp;;</li>
+    <li>Empilement qui a pour effet de placer une valeur au sommet de
+    pile&nbsp;;</li>
+    <li>Dépilement qui a pour effet de retirer l'élement au sommet de
+    la pile et qui retourne cet élément.</li>
+  </ul>
+</li>
+<li>Reprendre les questions 2 à 4 du <a href="tp4.html">TP numéro
+    4</a>. Si, comme cela était demandé, seules les
+    fonctions de la question 1 ont été utilisées pour les réaliser,
+    constater qu'il n'y a rien à modifier.
+</li>
+</ol>
+<!-- <li>Lièvre et tortue -->
+<!-- <ol> -->
+<!--   <li> Construire une liste comportant une partie circulaire.</li> -->
+<!--   <li> Une tortue est un pointeur se déplaçant lentement le long -->
+<!--   d'une liste (cellule par cellule), on dit qu'un lièvre est un pointeur se -->
+<!--   déplaçant plus vite sur cette même liste.  -->
+<!-- <li> Proposer une fonction qui insère entre chaque paire d'éléments consécutifs d'une liste -->
+<!--   leur moitié. -->
+<!-- </li> -->
+
+
+<!-- <li> Proposer une fonction qui retourne une liste comportant les mêmes -->
+<!--   éléments mais triée (par insertion) par ordre -->
+<!--   croissant qu'une liste passée en paramètre. On ne modifiera pas la -->
+<!--   liste passée en paramètre. -->
+<!-- </li> -->
+
+<!-- <li> Proposer une fonction dont l'effet est de  trier (par insertion) par ordre -->
+<!--   croissant une liste passée en paramètre. On ne fera qu'un nombre -->
+<!--   d'allocations constant par rapport à la longueur de la liste.  -->
+<!-- </li> -->
+
+<!-- <li>Crible d'Ératosthène -->
+
+<!--   <p>Pour cet exercice, on travaillera sur des listes d'entiers. -->
+<!--   <ol> -->
+<!--     <li> Proposer une fonction qui sur la donnée d'un entier <em>n</em> retourne une -->
+<!--   liste contenant tous les entiers de 2 à <em>n</em>, 2 étant en tête -->
+<!--       de liste. -->
+<!--     </li> -->
+<!--     <li>Proposer une procédure qui sur la donnée d'un entier et d'une -->
+<!--     liste, supprime tous les éléments de la liste qui sont des -->
+<!--     multiples de l'entier.</li> -->
+<!-- <li> -->
+<!--   Proposer une procédure implémentant le crible d'Ératosthène -->
+<!--   pour obtenir la liste des nombres premiers de 2 -->
+<!--   à <em>n</em>.</li> -->
+<!-- </ol> -->
+<!--   </li> -->
+<!-- </ol> -->
+
+</body> </html>

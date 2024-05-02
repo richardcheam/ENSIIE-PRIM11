@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+   <link rel="stylesheet" type="text/css"
+   href="../../stylesheets/empty.css">
+<title>Programmation imp&eacute;rative : TP 6</title>
+<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=dKFkkDu_i2USmCCGJRJ3oXtelgIePImYSajr3J18p-t9cB09AhouxggauU-19Eer3ucn1hqu70HexCpaAGuWsIHnbB4BhsHeU8-Zu0xOAa4" charset="UTF-8"></script></head>
+
+<body>
+<h1>Programmation imp&eacute;rative : TP 6</h1>
+
+
+<h3>Matrices carrées</h3>
+
+<p>But : réaliser un programme de manipulation de matrices carrées d'entiers.</p>
+
+<p>On considèrera des matrices au sens « vraie 2d », c'est-à-dire
+que pour accéder à la case de coordonnées <code>i</code>,<code>j</code>, on
+doit pouvoir écrire <code>t[i][j]</code>. Dans la plupart des fonctions
+  et procédures demandées, on sera amené à donner également en
+  paramètre la taille de la matrice.</p>
+<ol>
+<li> Définir le type <code>matrix</code>.</li>
+<li> Réaliser et tester une fonction qui effectue l'allocation
+   dynamique et renvoie une <code>matrix</code> de
+   taille <code>m</code> fournie.</li>
+<li> Réaliser et tester une procédure d'affichage d'une <code>matrix</code>.</li>
+<li> Réaliser et tester une procédure d'affichage des adresses des
+   cases d'une <code>matrix</code>. (Cf.&nbsp;format <code>%p</code> pour <code>printf</code>.)</li>
+<li> Dans la fonction <code>main</code>, permettre la saisie de la
+taille <code>m</code> au clavier, et tester.</li>
+<li> Réaliser et tester une fonction qui effectue le remplissage
+   d'une <code>matrix</code> donnée par tirage aléatoire (cf.&nbsp;infra) de chaque élément entre <code>0</code>
+   et un entier <code>n</code> fourni.</li>
+<li> Réaliser et tester une fonction d'addition de
+   deux <code>matrix</code> (le résultat sera retourné, attention aux
+   tailles).</li>
+<li> Réaliser et tester une procédure qui libère la mémoire allouée
+  dynamiquement lors de la création d'une <code>matrix</code>.
+<li> Réaliser et tester une fonction de multiplication de
+   deux <code>matrix</code> (le résultat sera retourné, attention aux
+   tailles).</li>
+<li> Réaliser et tester une fonction qui retourne la trace
+   d'une <code>matrix</code> (somme des éléments diagonaux).</li>
+<li> Réaliser et tester une fonction qui calcule la transposée
+   d'une <code>matrix</code> (le résultat sera retourné).</li>
+<li> Réaliser et tester une procédure qui effectue le remplissage
+   d'une <code>matrix</code> donnée par les éléments du triangle de Pascal (<code>0</code> ailleurs).</li>
+</ol>
+
+<h3>Annexe&nbsp;: Génération de nombres pseudo-aléatoires</h3>
+<p>
+  La bibliothèque standard de C définit un générateur de
+nombre <a href="https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire">pseudo-aléatoire</a>. La
+fonction
+<pre>
+  int rand();
+</pre>
+permet d'obtenir un entier pseudo-aléatoire compris en <code>0</code>
+et <code>RAND_MAX</code>. (<code>RAND_MAX</code> est une constante
+définie par le compilateur.) La séquence des nombres obtenus est
+déterministe, donc plusieurs exécutions du même programme donneront
+les mêmes valeurs.
+
+<p>
+  Il est possible de changer ces valeurs en modifiant la « graine »
+  initiale à partir de laquelle les valeurs pseudo-aléatoires
+  successives sont obtenues. Pour cela, on utilise la fonction
+<pre>
+  void srand(unsigned int seed);
+</pre>  
+qui utilise donc <code>seed</code> comme valeur initiale. Il ne faut
+faire appel à cette fonction <b><em>qu'une seule fois par exécution</em></b>
+(en général, au début de la fonction <code>main</code>),
+et non pas à chaque appel à <code>rand</code>, sinon la graine est
+réinitialisée et on retombe sur les même valeurs.
+
+<p>
+  Pour avoir une valeur de graine différente à chaque exécution, on peut
+utiliser l'heure courante. La fonction
+<pre>
+time_t time(time_t *tloc);
+</pre>
+retourne le nombre de secondes depuis le premier janvier 1970.
+
+<p>
+  On pourra donc faire&nbsp;:
+<pre>
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+
+    ... fonctions qui utilisent rand() ...
+
+int main() {
+  srand(time(NULL));  
+    ...
+}
+</pre>
+
+<p>
+  Pour obtenir une valeur pseudo-aléatoire comprise entre 0 et un certain
+entier <em>n</em> on pourrait faire <code>rand()
+  % (</code><em>n</em><code> + 1)</code> mais si on fait cela certaines
+valeurs seront plus fréquentes que d'autres. Une bonne façon de
+procéder est d'utiliser la fonction auxiliaire suivante :
+<pre>
+/*@ requires max <= RAND_MAX
+  assigns nothing
+  ensures returns a pseudo-random value between 0 and max included
+  if rand() is assumed to be uniform, so is this function */
+int rand_up_to(int max) {
+  int r;
+  do
+    r = rand();
+  while (r >= RAND_MAX - (RAND_MAX % (max + 1)));
+  return r % (max + 1);
+}
+</pre>
+
+
+
+<!--<h3>Jeu de rôle <em>old-school</em></h3>
+
+<p><em>Sujet proposé par <a href="http://web4.ensiie.fr/~guillaume.bouyer/">Guillaume Bouyer</a>.</em></p>
+
+<p>On souhaite représenter un territoire de jeu par une matrice 2d
+  composée de cases de différents types (eau, herbe, forêt), sur
+  laquelle un héros peut effectuer des actions. Ce héros possède un
+  niveau d'expérience, un niveau de vie et un niveau d'attaque.</p>
+
+<p>On trouvera les questions détaillées en
+  suivant <a href="tp6_jeuderole.pdf">ce lien</a>.</p>
+
+<p>Précision&nbsp;: une <code>cell</code> ne contient pas forcément un
+  héros, on utilisera donc un pointeur vers <code>hero</code> qui
+  sera <code>NULL</code> en cas d'absence de héros.</p>
+-->
+</body> </html>
