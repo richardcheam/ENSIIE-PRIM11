@@ -1,0 +1,20 @@
+For graphical interface (SDL):
+
+Linux : gcc -Wall -o prog_sdl main_sdl.c function.c stack.c list.c `pkg-config --cflags --libs sdl2` -lm
+
+Mac : gcc -Wall -o prog_sdl main_sdl.c function.c stack.c list.c -I include -L lib -l SDL2 -lm
+
+
+Without graphical interface (SDL):
+
+gcc -Wall -o prog main.c function.c stack.c list.c -lm
+
+
+
+//There are 2 main.c one with the implementation of GUI (main_sdl.c) and another one is not (main.c)
+
+//include and lib folders are needed for SDL library
+
+//As the command for Linux and Mac is different I decided to create a Makefile for the program without graphical interface
+
+//-lm is for math.h but I run just fine without it
